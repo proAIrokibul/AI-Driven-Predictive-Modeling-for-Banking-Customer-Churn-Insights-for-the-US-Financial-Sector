@@ -1,112 +1,84 @@
 # AI-Driven-Predictive-Modeling-for-Banking-Customer-Churn-Insights-for-the-US-Financial-Sector
 
 ## Project Overview
-This project aims to predict customer churn for a banking institution using machine learning techniques. Customer churn refers to the phenomenon where customers stop doing business with a company. Accurately predicting churn enables banks to implement targeted retention strategies, improve customer satisfaction, and reduce revenue loss.
-
-The dataset contains detailed information about 10,000 customers, including demographic, account, and transactional features. Using this data, we explore various preprocessing techniques, data visualizations, and three machine learning models: Logistic Regression, Random Forest, and XGBoost.
+This project focuses on predicting customer churn for a banking institution using machine learning models. Customer churn, the rate at which customers stop doing business with a company, is a critical metric for understanding customer retention and improving business strategies. By analyzing the dataset and applying classification models, we aim to provide actionable insights and accurate predictions to assist the bank in retaining its customers.
 
 ---
 
-## Key Features
+## Dataset Description
+The dataset contains 10,000 observations with the following features:
 
-### **Data Preprocessing**
-- Handled missing values and outliers to ensure data quality.
-- Encoded categorical variables (e.g., Geography, Gender) for compatibility with machine learning algorithms.
-- Scaled numerical features (e.g., CreditScore, Balance, EstimatedSalary) for improved model performance.
-
-### **Exploratory Data Analysis (EDA)**
-- Visualized key patterns such as customer demographics, account features, and their correlation with churn.
-- Identified influential features like Age, Balance, and IsActiveMember status.
-
-### **Machine Learning Models**
-- **Logistic Regression**: A baseline linear model.
-- **Random Forest**: An ensemble model that improves accuracy and reduces overfitting.
-- **XGBoost**: A gradient boosting algorithm providing state-of-the-art predictive performance.
-
-### **Model Evaluation**
-- Compared models using Accuracy, Confusion Matrix, and Classification Report.
-- Highlighted the trade-offs between precision and recall for churn prediction.
+- **RowNumber**: Index of the row.
+- **CustomerId**: Unique identifier for the customer.
+- **Surname**: Customer's surname.
+- **CreditScore**: Credit score of the customer.
+- **Geography**: Country of residence.
+- **Gender**: Gender of the customer.
+- **Age**: Age of the customer.
+- **Tenure**: Number of years the customer has been with the bank.
+- **Balance**: Account balance of the customer.
+- **NumOfProducts**: Number of bank products used by the customer.
+- **HasCrCard**: Whether the customer has a credit card (1 = Yes, 0 = No).
+- **IsActiveMember**: Whether the customer is an active member (1 = Yes, 0 = No).
+- **EstimatedSalary**: Estimated annual salary of the customer.
+- **Exited**: Whether the customer churned (1 = Yes, 0 = No).
 
 ---
 
-## Model Results
+## Data Preprocessing
+The dataset underwent the following preprocessing steps:
 
-### **Random Forest**
-- **Accuracy**: 86.35%  
-- **Confusion Matrix**:
-  ```
-  [[1545   62]
-   [ 211  182]]
-  ```
+1. **Handling Missing Values**: Ensured no missing values were present.
+2. **Encoding Categorical Variables**: Used one-hot encoding for `Geography` and label encoding for `Gender`.
+3. **Feature Scaling**: Applied MinMaxScaler to normalize features.
+4. **Feature Selection**: Removed non-informative columns such as `RowNumber`, `CustomerId`, and `Surname`.
+5. **Splitting the Dataset**: Split into training and testing sets (80%-20%).
+
+---
+
+## Models Applied
+Three machine learning models were applied to predict customer churn:
+
+### 1. Logistic Regression
+- **Accuracy**: 81.1%
 - **Classification Report**:
-  ```
-                precision    recall  f1-score   support
+  - Precision (Class 0): 0.83
+  - Recall (Class 0): 0.96
+  - F1-Score (Class 0): 0.89
+  - Precision (Class 1): 0.55
+  - Recall (Class 1): 0.20
+  - F1-Score (Class 1): 0.29
 
-            0       0.88      0.96      0.92      1607
-            1       0.75      0.46      0.57       393
-
-     accuracy                           0.86      2000
-    macro avg       0.81      0.71      0.75      2000
- weighted avg       0.85      0.86      0.85      2000
-  ```
-
-### **XGBoost**
-- **Accuracy**: 86.25%  
-- **Confusion Matrix**:
-  ```
-  [[1523   84]
-   [ 191  202]]
-  ```
+### 2. Random Forest
+- **Accuracy**: 86.35%
 - **Classification Report**:
-  ```
-                precision    recall  f1-score   support
+  - Precision (Class 0): 0.88
+  - Recall (Class 0): 0.96
+  - F1-Score (Class 0): 0.92
+  - Precision (Class 1): 0.75
+  - Recall (Class 1): 0.46
+  - F1-Score (Class 1): 0.57
 
-            0       0.89      0.95      0.92      1607
-            1       0.71      0.51      0.59       393
-
-     accuracy                           0.86      2000
-    macro avg       0.80      0.73      0.76      2000
- weighted avg       0.85      0.86      0.85      2000
-  ```
-
-### **Logistic Regression**
-- **Accuracy**: 81.10%  
-- **Confusion Matrix**:
-  ```
-  [[1543   64]
-   [ 314   79]]
-  ```
+### 3. XGBoost
+- **Accuracy**: 86.25%
 - **Classification Report**:
-  ```
-                precision    recall  f1-score   support
-
-            0       0.83      0.96      0.89      1607
-            1       0.55      0.20      0.29       393
-
-     accuracy                           0.81      2000
-    macro avg       0.69      0.58      0.59      2000
- weighted avg       0.78      0.81      0.77      2000
-  ```
+  - Precision (Class 0): 0.89
+  - Recall (Class 0): 0.95
+  - F1-Score (Class 0): 0.92
+  - Precision (Class 1): 0.71
+  - Recall (Class 1): 0.51
+  - F1-Score (Class 1): 0.59
 
 ---
 
 ## Business Insights
-
-1. **High-Risk Age Groups**:
-   - Customers in the middle-age bracket (40–50 years) are more likely to churn, possibly due to financial and lifestyle changes.
-
-2. **Account Balance Impacts Churn**:
-   - Customers with zero or very low balances show a higher tendency to leave. This indicates a need to engage these customers with better incentives or personalized financial products.
-
-3. **Activity Levels and Churn**:
-   - Inactive members are significantly more likely to churn. Promoting engagement through rewards or tailored banking services can help retain these customers.
-
-4. **Geographical Trends**:
-   - Different churn rates in countries highlight potential cultural or economic factors. Banks should consider localized strategies for customer retention.
+- The **Random Forest model** provided the highest accuracy and balanced performance, making it the best choice for predicting customer churn.
+- Customers with higher credit scores and active memberships are less likely to churn.
+- Understanding churn drivers, such as balance levels and tenure, can help the bank design targeted retention strategies.
 
 ---
 
 ## Conclusion
-This project demonstrates the power of machine learning in solving real-world business problems like customer churn. By leveraging advanced algorithms and data insights, banks can enhance customer satisfaction, optimize marketing budgets, and reduce churn rates effectively.
+This project successfully predicts customer churn using advanced machine learning techniques. The insights derived can guide banks in improving customer retention, enhancing profitability, and refining their business strategies.
 
----
+Feel free to explore the code and results in this repository. Contributions and feedback are welcome!
