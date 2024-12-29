@@ -81,4 +81,3 @@ Three machine learning models were applied to predict customer churn:
 ## Conclusion
 This project successfully predicts customer churn using advanced machine learning techniques. The insights derived can guide banks in improving customer retention, enhancing profitability, and refining their business strategies.
 
-Feel free to explore the code and results in this repository. Contributions and feedback are welcome!
